@@ -1,0 +1,32 @@
+body{
+  background-color: #202F3E;
+  font-family: helvetica;
+  color: #E6E6E6;
+}
+.navbar{
+  background-color: #3D4A58;
+  color: #E6E6E6;
+  border: none;
+}
+#brand{
+  color: #E6E6E6;
+}
+.navbar-form{
+  margin-right: 10px;
+}
+.well{
+  background-color: #3D4A58;
+  color: #E6E6E6;
+  border: none;
+}
+#title-link{
+  color: #E6E6E6;
+}
+#fav-button{
+  background-color: #3D4A58;
+  color: #E6E6E6;
+  border: none;
+}
+#fav-title{
+  color: #E6E6E6;
+}

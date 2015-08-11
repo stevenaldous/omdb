@@ -1,0 +1,20 @@
+<h1>favorites</h1>
+
+<% myFavs.forEach(function(fav){ %>
+  <div class="well">
+    <div class="row">
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <img src=<%= fav.poster %> class="img-responsive" alt="Responsive image">
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <h3 id="fav-title" ><%- link_to(fav.title, "/flicksearch/" + fav.imdbId) %></h3>
+      </div>
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        <h3><%= fav.year %></h3>
+      </div>
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+      <a id="brand" ><%- link_to('comments', '/favorites/'+fav.id+'/comments')%></a>
+      </div>
+      </div>
+  </div>
+<% }); %>

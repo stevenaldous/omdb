@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+    <h1><%= movieInfo.Title %></h1>
+  </div>
+  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+  <form method="post" action="/favorites">
+    <input type="hidden" name="imdbID" value="<%= movieInfo.imdbID %>">
+    <input type="hidden" name="Title" value="<%= movieInfo.Title %>">
+    <input type="hidden" name="Year" value="<%= movieInfo.Year %>">
+    <input type="hidden" name="Poster" value="<%= movieInfo.Poster %>">
+    <input id="fav-button" type="submit" value="add to favorites">
+  </form>
+  </div>
+</div>
+<div class="row">
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+  <div class="well">
+    <img src=<%= movieInfo.Poster %> class="img-responsive" alt="Responsive image">
+  </div>
+</div>
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+  <div class="well">
+    <div class="container-fluid">
+      <h5>Year: <%= movieInfo.Year %></h5>
+      <h5>Rated: <%= movieInfo.Rated %></h5>
+      <h5>Runtime: <%= movieInfo.Runtime %></h5>
+      <h5>Genre: <%= movieInfo.Genre %></h5>
+      <h5>imdb Rating: <%= movieInfo.imdbRating %></h5>
+      <h5>Plot: <%= movieInfo.Plot %></h5>
+      <h5>Actors: <%= movieInfo.Actors %></h5>
+      <h5>Director: <%= movieInfo.Director %></h5>
+      <h5>Writers: <%= movieInfo.Writer %></h5>
+    </div>
+  </div>
+  </div>
+</div>
