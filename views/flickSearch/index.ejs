@@ -2,7 +2,9 @@
 
 <% myResults.Search.forEach(function(search, index) { %>
   <div class="well">
-    <h3 id="title-link" ><%- link_to(search.Title, "/flickSearch/"  + search.imdbID) %></h3>
-    <h5><%= search.Year %></h5>
+    <div class="row">
+      <h3 id="title-link" ><%- link_to(search.Title, "/flickSearch/"  + search.imdbID) %></h3>
+      <h5><%= search.Year %></h5>
+    </div>
   </div>
 <% }); %>

@@ -14,12 +14,12 @@ router.get('/', function(req, res){
 });
 //POST /favorites - create favorites and add to DB
 router.post('/', function(req, res){
-  db.favorite.create({
-    imdbId: req.body.imdbID,
+  db.favorite.findOrCreate({where: {imdbId: req.body.imdbID}, defaults: {
+    // imdbId: req.body.imdbID,
     title:req.body.Title,
     year:req.body.Year,
     poster: req.body.Poster
-  }).then(function(){
+  }}).spread(function(){
     res.redirect('/favorites')
   });
 });
@@ -38,7 +38,8 @@ router.get('/:id/comments', function(req, res){
 });
 //POST-favorites/:id/comments - create new comment
 router.post('/:id/comments', function(req, res){
-  var id = req.body.id
+  // var id = req.body.id
+  var id = req.params.id
   var newComment = req.body.commField
   db.comment.create({comment: newComment, favoriteId:id}).then(function(comments){
     res.redirect('/favorites/'+comments.favoriteId+'/comments')

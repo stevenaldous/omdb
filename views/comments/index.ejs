@@ -1,18 +1,16 @@
 
-<h2><%= myFav.title %></h2>
+<h2><%- link_to(myFav.title, "/flicksearch/" + myFav.imdbId) %></h2>
 <h4><%= myFav.year %></h4>
 <br><br>
 
 <form action="" method="POST" role="form">
   <div class="form-group">
     <label for="">new comment</label>
-    <input type="hidden" name="id" value="<%= myFav.id %>">
     <input type="text" name='commField' class="form-control" id="" placeholder="new comment here...">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <br><br>
-
 <% myComments.forEach(function(comm){  %>
 <div class="well">
   <h3><%= comm.comment %></h3>
