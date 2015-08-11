@@ -26,17 +26,23 @@ router.post('/', function(req, res){
 
 //GET-favorites/:id/comments - get comments for fav
 router.get('/:id/comments', function(req, res){
-  db.favorite.findAll().then(function(favorite){
-    db.comment.findAll({include:[db.favorite]})(function(comm){
+  var id = req.params.id
+  db.favorite.find({where: {id: id}}).then(function(favorite){
+    db.comment.findAll({where:{favoriteId: id}, include:[db.favorite]}).then(function(comm){
      res.render('./comments/index', {
-      myFavs: favorite,
-      myComments: comm
+        myFav: favorite,
+        myComments: comm
       });
     });
   });
 });
 //POST-favorites/:id/comments - create new comment
-// router.post('/:id/comments', function(req, res){
-// })
+router.post('/:id/comments', function(req, res){
+  var id = req.body.id
+  var newComment = req.body.commField
+  db.comment.create({comment: newComment, favoriteId:id}).then(function(comments){
+    res.redirect('/favorites/'+comments.favoriteId+'/comments')
+  });
+});
 
 module.exports=router;

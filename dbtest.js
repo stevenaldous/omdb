@@ -1,4 +1,4 @@
-// var db = require('./models');
+var db = require('./models');
 
 // db.favorite.create({
 //     imdbId:'blahblah',
@@ -18,6 +18,6 @@
 // db.comment.findAll().then(function(comm){
 //   console.log(comm)
 // })
-// db.comment.create({comment:'comment 2',favoriteId:2}).then(function(comments){
-//   console.log(comments)
-// })
+db.comment.create({comment:'comment 3',favoriteId:2}).then(function(comments){
+  console.log(comments)
+})

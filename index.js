@@ -20,19 +20,6 @@ app.use("/favorites", require('./controllers/favorites.js'));
 app.get("/", function(req, res){
   res.render('main/index.ejs');
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
 // listen to this port when serving app
 app.listen(3000,function(){
   console.log("You're listening to the smooth sounds of port 3000")
