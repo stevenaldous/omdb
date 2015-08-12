@@ -22,14 +22,17 @@ router.get("/:index", function(req, res){
   console.log(url);
   request(url, function(error, response, data){
     var parsedData = JSON.parse(data);
-    db.favorite.find({where: {imdbId: q}}).then(function(favorite){
-      db.comment.findAll({where:{favoriteId: favorite.id},include:[db.favorite]}).then(function(comm){
-       res.render("flickSearch/show.ejs", {
+    res.render("flickSearch/show.ejs", {
           movieInfo: parsedData,
-          myFav: favorite,
-          myComments: comm
-      });
-     });
+          //attempt to include. think if/else is needed to accomplish
+    // db.favorite.find({where: {imdbId: q}}).then(function(favorite){
+    //   db.comment.findAll({where:{favoriteId: favorite.id},include:[db.favorite]}).then(function(comm){
+    //    res.render("flickSearch/show.ejs", {
+    //       movieInfo: parsedData,
+    //       myFav: favorite,
+    //       myComments: comm
+    //   });
+    //  });
     });
   });
 });
