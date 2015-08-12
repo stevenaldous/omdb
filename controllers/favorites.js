@@ -68,8 +68,6 @@ router.get('/tags', function(req, res){
 router.post('/:id/tags/new', function(req, res){
   var favId = req.params.id;
   var tag = req.body.newtag
-  // console.log(favId);
-  // console.log(tag);
   db.favorite.findById(favId).then(function(fav){
     db.tag.findOrCreate({where: {tag: tag}})
     .spread(function(tag, created){
