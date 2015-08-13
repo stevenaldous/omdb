@@ -26,6 +26,8 @@
         <h5>Runtime: <%= movieInfo.Runtime %></h5>
         <h5>Genre: <%= movieInfo.Genre %></h5>
         <h5>imdb Rating: <%= movieInfo.imdbRating %></h5>
+        <h5>Rotten Tomatoes: <%= movieInfo.tomatoMeter %></h5>
+        <h5>Audience Score: <%= movieInfo.tomatoUserMeter %></h5>
         <h5>Plot: <%= movieInfo.Plot %></h5>
         <h5>Actors: <%= movieInfo.Actors %></h5>
         <h5>Director: <%= movieInfo.Director %></h5>
@@ -34,6 +36,16 @@
     </div>
   </div>
 </div>
-<br><br>
 
+<div class="well">
+  <h3>Tags</h3>
+  <% tags.forEach(function(fav){  %>
+    <%= fav.tag %>
+  <% });  %>
+</div>
 
+<% comments.forEach(function(comm){ %>
+  <div class="well">
+    <%= comments.comment  %>
+  </div>
+<% });  %>

@@ -6,10 +6,24 @@ var db = require('../models');
 
 //GET /favorites - favorites home page
 router.get('/', function(req, res){
-  db.favorite.findAll().then(function(fav){
+  db.favorite.findAll({include: [db.comment, db.tag]}).then(function(fav){
     res.render('favorites/index', {myFavs:fav});
   });
 });
+//GET /favorites/tag/:id - favorites home page filtered by tag
+router.get('/tags/:id', function(req, res){
+  db.favorite.findAll({
+    include: [{
+    model: db.comment
+  },{
+    model: db.tag,
+    where: {id: req.params.id}
+  }]
+  }).then(function(fav){
+    res.render('favorites/index', {myFavs:fav});
+  });
+});
+
 //POST /favorites - create favorites and add to DB
 router.post('/', function(req, res){
   db.favorite.findOrCreate({where: {imdbId: req.body.imdbID}, defaults: {
@@ -51,22 +65,16 @@ router.delete('/:id', function(req,res){
   });
 });
 
+
+
 //GET /favorites/:id/tag/new - add a new tag
 router.get('/:id/tags/new', function(req, res){
-  res.render('tags/new', {favoriteId: req.params.id});
+  res.render('tags/new', {fav: req.params.id});
 });
-
-//GET /favotites/tags - get all tags
-router.get('/tags', function(req, res){
-  db.tag.findAll().then(function(tag){
-    res.render('tags/index', {tags:tag})
-  })
-})
-
 
 //POST/   -create new tag
 router.post('/:id/tags/new', function(req, res){
-  var favId = req.params.id;
+  var favId = parseInt(req.params.id);
   var tag = req.body.newtag
   db.favorite.findById(favId).then(function(fav){
     db.tag.findOrCreate({where: {tag: tag}})

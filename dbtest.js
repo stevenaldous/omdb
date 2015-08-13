@@ -35,9 +35,9 @@ var db = require('./models');
 //     });
 //   });
 // });
-db.comment.findAll().then(function(fav){
-  console.log(fav.get());
-});
+// db.comment.findAll().then(function(fav){
+//   console.log(fav.get());
+// });
 // db.favoritesTags.findAll({where: {tagId: 1}}).then(function(glue){
 //   console.log(glue.get());
 // });
@@ -48,3 +48,17 @@ db.comment.findAll().then(function(fav){
 // db.tag.findById(1).then(function(tag){
 //   console.log(tag.get());
 // });
+
+  var favId = 3;
+  var tag = "black"
+  db.favorite.findById(favId).then(function(fav){
+    db.tag.findOrCreate({where: {tag: tag}})
+    .spread(function(tag, created){
+      fav.addTag(tag).then(function(){
+        console.log(fav.get());
+        console.log('-----------');
+        console.log(tag.get());
+        console.log('-----------');
+      });
+    });
+  });

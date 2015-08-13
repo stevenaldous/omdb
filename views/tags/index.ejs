@@ -2,7 +2,8 @@
  <h2>current tags</h2>
   <ul>
     <% tags.forEach(function(tag){ %>
-     <li><a href='' ><%= tag.tag %></a></li>
+     <li><a href='/favorites/tags/<%= tag.id %>' ><%= tag.tag %></a></li>
     <% }); %>
   </ul>
 </div>
+
